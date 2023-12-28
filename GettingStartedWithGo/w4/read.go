@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
 	"os"
@@ -16,10 +15,8 @@ type Name struct {
 func main() {
 	fmt.Print("Enter the filename: ")
 
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	filename := scanner.Text()
-
+	var filename string
+	fmt.Scanln(&filename)
 	content, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
