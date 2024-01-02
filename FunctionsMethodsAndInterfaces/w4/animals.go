@@ -59,15 +59,10 @@ func (s Snake) Speak() {
 }
 
 func main() {
-
-	cow := Cow{"grass", "walk", "moo"}
-	bird := Bird{"worms", "fly", "peep"}
-	snake := Snake{"mice", "slither", "hsss"}
-
 	animals := make(map[string]Animal)
-	animals["cow"] = cow
-	animals["snake"] = snake
-	animals["bird"] = bird
+	animals["cow"] = Cow{"grass", "walk", "moo"}
+	animals["snake"] = Snake{"mice", "slither", "hsss"}
+	animals["bird"] = Bird{"worms", "fly", "peep"}
 
 	for {
 		var command, name, action string
