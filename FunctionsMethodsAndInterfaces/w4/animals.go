@@ -10,28 +10,64 @@ type Animal interface {
 	Speak()
 }
 
-type animal struct {
+type Cow struct {
 	food, locomotion, sound string
 }
 
-func (a animal) Eat() {
-	fmt.Println(a.food)
+func (c Cow) Eat() {
+	fmt.Println(c.food)
 }
 
-func (a animal) Move() {
-	fmt.Println(a.locomotion)
+func (c Cow) Move() {
+	fmt.Println(c.locomotion)
 }
 
-func (a animal) Speak() {
-	fmt.Println(a.sound)
+func (c Cow) Speak() {
+	fmt.Println(c.sound)
+}
+
+type Bird struct {
+	food, locomotion, sound string
+}
+
+func (b Bird) Eat() {
+	fmt.Println(b.food)
+}
+
+func (b Bird) Move() {
+	fmt.Println(b.locomotion)
+}
+
+func (b Bird) Speak() {
+	fmt.Println(b.sound)
+}
+
+type Snake struct {
+	food, locomotion, sound string
+}
+
+func (s Snake) Eat() {
+	fmt.Println(s.food)
+}
+
+func (s Snake) Move() {
+	fmt.Println(s.locomotion)
+}
+
+func (s Snake) Speak() {
+	fmt.Println(s.sound)
 }
 
 func main() {
-	animals := make(map[string]animal)
 
-	animals["cow"] = animal{"grass", "walk", "moo"}
-	animals["bird"] = animal{"worms", "fly", "peep"}
-	animals["snake"] = animal{"mice", "slither", "hsss"}
+	cow := Cow{"grass", "walk", "moo"}
+	bird := Bird{"worms", "fly", "peep"}
+	snake := Snake{"mice", "slither", "hsss"}
+
+	animals := make(map[string]Animal)
+	animals["cow"] = cow
+	animals["snake"] = snake
+	animals["bird"] = bird
 
 	for {
 		var command, name, action string
@@ -68,3 +104,21 @@ func main() {
 		}
 	}
 }
+
+/*
+Define an interface type called Animal which describes the methods of an animal.
+
+Specifically, the Animal interface should contain the methods Eat(), Move(),
+and Speak(), which take no arguments and return no values.
+
+The Eat() method should print the animal’s food, the Move() method
+should print the animal’s locomotion, and the Speak() method
+should print the animal’s spoken sound. Define three types Cow, Bird, and Snake.
+
+For each of these three types, define methods Eat(), Move(), and Speak() so that
+the types Cow, Bird, and Snake all satisfy the Animal interface.
+
+When the user creates an animal, create an object of the appropriate type.
+
+Your program should call the appropriate method when the user issues a query command.
+*/
